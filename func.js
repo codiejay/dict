@@ -22,9 +22,9 @@ let backToMeaning = $(meaning.children("h1"))
 
 searchButton.on("click", ()=> {
 
-    let newWord = usersWord.val().toUpperCase()
+    let newWord = usersWord.val().toLowerCase();
 
-    if( words[newWord]){
+    if( words[newWord].toLowerCase()){
 
 
         main.animate({height: "20vh"}, 'slow');
@@ -37,7 +37,7 @@ searchButton.on("click", ()=> {
 
         // Edit texts
         meaning.children("h3").text(usersWord.val().toUpperCase())
-        meaning.children("#word").text(words[usersWord.val().toUpperCase()])
+        meaning.children("#word").text(words[usersWord.val().toLowerCase()])
     }
 
    
@@ -84,7 +84,7 @@ backToMeaning.on("click", ()=> {
 
 body.on("keyup", (e)=>{
 
-    let newWord = usersWord.val().toUpperCase()
+    let newWord = usersWord.val().toLowerCase()
 
     if(words[newWord]){
 
@@ -98,7 +98,7 @@ body.on("keyup", (e)=>{
 
         meaning.children("h3").text(usersWord.val().toUpperCase())
 
-        meaning.children("p").text(words[usersWord.val().toUpperCase()])
+        meaning.children("p").text(words[usersWord.val().toLowerCase()])
     }
 
 
