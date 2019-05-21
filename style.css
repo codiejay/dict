@@ -1,0 +1,173 @@
+body{
+    padding: 0;
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+html{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.main{
+    background: linear-gradient(to top right, #912BC0, #211F97);
+    height: 100vh;
+    position: relative;
+    
+
+}
+
+.main::before{
+    content: "";
+    display: block;
+    background: url("./Group.png");
+    background-repeat: no-repeat;
+    width: 30vw;
+    height: 90vh;
+    position: fixed;
+    top: 0;
+    transform: scale(1.2);
+    opacity: 0.4;
+}
+
+
+
+.main input{
+    padding: 1em 0.8em;
+    border-radius: 100px;
+    border: 0;
+    font-size: 1.3em;
+    color: rgba(0, 0, 0, 0.733);
+    font-family: 'Raleway', sans-serif;
+    display: inline-block;
+    
+}
+
+.inputs{
+    padding-top: 42vh;
+    padding-left: 30vw;
+    
+}
+
+.inputs img{
+    width: 5vh;
+    padding: 20px 0;
+    display: inline-block;  
+    opacity: 0.9;
+    cursor: pointer;
+
+}
+
+
+.inputssection{
+    background-color: white;
+    width: 60%;
+    border-radius: 100px;
+    display: grid;
+    grid-template-columns:  80% 20%;
+    
+
+
+}
+
+
+.meaning{
+   width: 60%;
+   position: relative;
+   margin: 5vh auto;
+   color: rgb(29, 29, 27);
+   line-height: 1.9em;
+   font-weight: 100;
+   box-shadow: 0px 2px 22px 1px rgba(145, 43, 192, 0.144);
+   padding: 19vh 3vw 20vh 3vw;
+   border-radius: 14px;
+   font-weight: lighter;
+   font-family: 'Raleway', sans-serif;
+   font-weight: 200;
+
+}
+
+.meaning h1{
+    font-size: 2.9em;
+    background: linear-gradient(#912BC0, #211F97);
+    padding: 0.3em;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 3%;
+    border-radius: 100px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0px 0px 19px 3px rgba(212, 47, 218, 0.336);
+}
+
+.meaning h3{
+    font-size: 2.3em;
+    font-weight: bold;
+    padding-bottom: 0.3em;
+    width: max-content;
+    border-bottom: 1px solid #211F97;
+}
+
+
+.meaning p{
+    font-size: 1.2em;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.555)
+}
+
+
+
+@media (min-width: 760px) and (max-width: 1024px) {
+
+    .inputssection{
+        width: 80%;
+    }
+
+    .inputs{
+        padding-left: 15vw;
+    }
+
+    .main::before{
+        width: 20vw;
+        height: 100vh;
+        background-size: contain;
+        top: 10%;
+        left: 3%;
+
+    }
+
+    .meaning{
+        width: 70%;
+
+    }
+
+
+
+}
+
+@media (min-width: 320px) and (max-width: 480px){
+
+    .inputssection{
+        width: 90vw;
+    }
+
+    .inputs{
+        padding-left: 5vw;
+    }
+    .main::before{
+        width: 50vw;
+        height: 37vh;
+        background-size: contain;
+        top: 3%;
+        left: 3%;
+
+    }
+
+    .meaning{
+        width: 80%;;
+    }
+
+}
