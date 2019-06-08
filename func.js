@@ -21,7 +21,7 @@ let backToMeaning = $(meaning.children("h1"))
 searchButton.on("click", ()=> {
 
   
-
+if(usersWord.val() !== ""){
 // A variable to save the lowercase of usersword
 let userWordtolowercase = usersWord.val().toLowerCase()
 
@@ -108,10 +108,11 @@ getUserWord.then(snapshot => {
   
  
 
- 
-
+}
   
 })
+
+
 
 backToMeaning.on("click", ()=> {
   inputBox.animate({opacity: "1"})
