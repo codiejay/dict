@@ -47,7 +47,7 @@ html{
 }
 
 .inputs{
-    padding-top: 42vh;
+    padding-top: 8vh;
     padding-left: 30vw;
     
 }
@@ -73,13 +73,18 @@ html{
 
 }
 
+.inputssection input:focus{
+    outline: none;
+    
+}
+
 
 .meaning{
    width: 60%;
    position: relative;
    margin: 5vh auto;
    color: rgb(29, 29, 27);
-   line-height: 1.9em;
+   line-height: 2em;
    font-weight: 100;
    box-shadow: 0px 2px 22px 1px rgba(145, 43, 192, 0.144);
    padding: 19vh 3vw 20vh 3vw;
@@ -120,6 +125,57 @@ html{
 }
 
 
+.headingLoading{
+    width: 20vw;
+    height: 5vh;
+    background-color: rgb(241, 240, 240);
+    position: relative;
+    margin-bottom: 3em;
+
+}
+
+
+.headingLoading::before{
+    content: "";
+    width: 30%;
+    height:100%;
+    left: 3%;
+    display: block;
+    background-color:rgba(255, 255, 255, 0.699);
+    -webkit-clip-path: polygon(5% 0, 100% 0%, 95% 100%, 0% 100%);
+    clip-path: polygon(5% 0, 100% 0%, 95% 100%, 0% 100%);
+    position: absolute;
+    top: 0;
+    animation: loading 1.1s infinite ease-in-out
+
+}
+
+
+.meaningLoading{
+    width: 60vw;
+    height: 40vh;
+    background: rgb(241, 240, 240);
+    position: relative;
+
+}
+
+
+.meaningLoading::before{
+    content: "";
+    width: 30%;
+    height:100%;
+    left: 3%;
+    display: block;
+    background-color:rgba(255, 255, 255, 0.479);
+    -webkit-clip-path: polygon(25% 0, 100% 0, 73% 100%, 0% 100%);
+    clip-path: polygon(25% 0, 100% 0, 73% 100%, 0% 100%);
+    position: absolute;
+    top: 0;
+    animation: loadingMeaning 1.1s infinite ease-in-out
+}
+
+
+/* Tablet responsivness */
 
 @media (min-width: 760px) and (max-width: 1024px) {
 
@@ -145,9 +201,19 @@ html{
 
     }
 
+    .headingLoading{
+        height: 3vh;
+    }
+
+    .meaningLoading{
+        height: 20vh;
+    }
+
 
 
 }
+
+/* Moboile Responsivness */
 
 @media (min-width: 320px) and (max-width: 480px){
 
@@ -159,11 +225,7 @@ html{
         padding-left: 5vw;
     }
     .main::before{
-        width: 50vw;
-        height: 37vh;
-        background-size: contain;
-        top: 3%;
-        left: 3%;
+        display: none;
 
     }
 
@@ -171,4 +233,42 @@ html{
         width: 80%;;
     }
 
+    .headingLoading{
+        height: 3vh;
+    }
+
+    .meaningLoading{
+        height: 20vh;
+    }
+
+
+}
+
+
+
+
+/* Animations*/
+
+@-webkit-keyframes loading{
+    from{
+        left: 3%;
+        opacity: 1s
+    }
+
+    to{
+        left: 80%;
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes loadingMeaning{
+    from{
+        left: 3%;
+        opacity: 0.6s
+    }
+
+    to{
+        left: 100%;
+        opacity: 0;
+    }
 }

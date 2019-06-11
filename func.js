@@ -1,6 +1,12 @@
 let body  = $("body");
 
 
+// The loader elements
+
+let headingLoading = $(".headingLoading");
+let meaningLoading = $(".meaningLoading");
+
+
 
 let main = $(".main")
 let inputBox = main.children(".inputs");
@@ -22,7 +28,13 @@ searchButton.on("click", ()=> {
 
   
 if(usersWord.val() !== ""){
-// A variable to save the lowercase of usersword
+
+main.animate({height: "20vh"}, 'slow');
+// Opaque the input area
+inputBox.animate({opacity: "0.88"}, 400);
+
+// Show the meaning section
+meaning.show(300)
 let userWordtolowercase = usersWord.val().toLowerCase()
 
 // A reference of the usersword.
@@ -35,9 +47,6 @@ getUserWord.then(snapshot => {
   // If it;s empty then return something like so
   if(snapshot.empty){
     console.log("No data")
-    main.animate({height: "20vh"}, 'slow');
-    inputBox.animate({opacity: "0.00003"}, 400)
-    meaning.show(300)
 
     meaning.children("h3").text("Word not Found");
     meaning.children("#word").html(`Oh we couldn't find your word! ${`<a style="color: #211F97; font-weight: 900" href=" https://www.google.com/search?client=firefox-b-d&q=${usersWord.val()} "> Click Here</a>` } to find it on GOOGLE, Goolge has all the answers after all. `)
@@ -50,12 +59,6 @@ getUserWord.then(snapshot => {
 
   else{
 
-    main.animate({height: "20vh"}, 'slow');
-    // Hide the input area
-    inputBox.animate({opacity: "0.00003"}, 400)
-
-    // Show the meaning section
-    meaning.show(300)
 
   snapshot.forEach( 
 
@@ -63,6 +66,9 @@ getUserWord.then(snapshot => {
 
       // that's an object.
       let returnedWord = doc.data()
+
+      meaningLoading.hide();
+      headingLoading.hide()
 
        // Edit texts
       meaning.children("h3").text(usersWord.val().toUpperCase())
@@ -116,11 +122,14 @@ getUserWord.then(snapshot => {
 
 backToMeaning.on("click", ()=> {
   inputBox.animate({opacity: "1"})
-
+  meaning.children("h3").text("");
+  meaning.children("#word").text("")
   meaning.hide(300)
+  
 
   main.animate({height: "100vh"}, 'slow');
-
+  meaningLoading.show();
+  headingLoading.show()
 
 })
 
@@ -173,25 +182,3 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 let ref = firebase.firestore();
-
-
-// for(let wordBoy in words){
-//   ref.collection("dictionary").doc().set
-//   (
-//     {names: wordBoy,
-//     definition: words[wordBoy] 
-//   }
-    
-//   )
-// } 
-
-// ref.collection("dictionary").doc("00DToeTRVW5d57l5JeVJ").get()
-// .then( doc =>{
-//   if(!doc.exists){
-//     console.log("No documents Oh!")
-//   }
-
-//   else{
-//     console.log(doc.data())
-//   }
-// } )
