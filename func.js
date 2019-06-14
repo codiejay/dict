@@ -4,13 +4,14 @@ let body  = $("body");
 
 
 // The loader elements
-
 let headingLoading = $(".headingLoading");
 let meaningLoading = $(".meaningLoading");
 
 
 
-let main = $(".main")
+let main = $(".main");
+
+
 let inputBox = main.children(".inputs");
 
 let searchButton = $("#searchButton")
@@ -19,39 +20,49 @@ let meaning = $(".meaning")
 
 let usersWord = $(".usersWord")
 
-meaning.hide()
+
 
 let backToMeaning = $(meaning.children("h1"))
 
 
   
-
+// When the search Icon is clicked.
 searchButton.on("click", ()=> {
 
-  
+// Checking to make sure the input box isnt empty
 if(usersWord.val() !== ""){
 
-main.animate({height: "20vh"}, 'slow');
-// Opaque the input area
-inputBox.animate({opacity: "0.88"}, 400);
+// if it isnt empty, regardless of 
+// Getting the data or not, 
+// Users see a loading Animation
+//  ======>
 
-// Show the meaning section
-meaning.show(300)
+    main.animate({height: "20vh"}, 'slow');
+
+    // Opaque the input area
+    inputBox.animate({opacity: "0.88"}, 400);
+
+    // Show the meaning section
+    meaning.show(300)
+
+// The usersWord to lowercases
 let userWordtolowercase = usersWord.val().toLowerCase()
 
-// A reference of the usersword.
+// Use this to check if the word is om database.
 let getUserWord = ref.collection("dictionary").where("names" , "==" ,  userWordtolowercase).get()
 
 // Get the snapshot of that document.
 getUserWord.then(snapshot => {
 
 
-  // If it;s empty then return something like so
+  // If it's empty then return something like so
   if(snapshot.empty){
     console.log("No data")
 
     meaning.children("h3").text("Word not Found");
     meaning.children("#word").html(`Oh we couldn't find your word! ${`<a style="color: #211F97; font-weight: 900" href=" https://www.google.com/search?client=firefox-b-d&q=${usersWord.val()} "> Click Here</a>` } to find it on GOOGLE, Goolge has all the answers after all. `)
+    headingLoading.hide();
+    meaningLoading.hide();
 
 
   }
@@ -83,45 +94,13 @@ getUserWord.then(snapshot => {
 
 
 
-  // let newWord = usersWord.val().toLowerCase();
-
-  // if( words[newWord].toLowerCase()){
-
-
-  //     main.animate({height: "20vh"}, 'slow');
-
-  //     // Hide the input area
-  //     inputBox.animate({opacity: "0.00003"}, 400)
-
-  //     // Show the meaning section
-  //     meaning.show(300)
-
-  //     // Edit texts
-  //     meaning.children("h3").text(usersWord.val().toUpperCase())
-  //     meaning.children("#word").text(words[usersWord.val().toLowerCase()])
-  // }
-
- 
-
- 
-
-  // else{
-
-    
-      
-     
-
-  // }
-
-  
- 
-
 }
   
 })
 
 
 
+// When users click the "X" button.
 backToMeaning.on("click", ()=> {
   inputBox.animate({opacity: "1"})
   meaning.children("h3").text("");
@@ -138,30 +117,75 @@ backToMeaning.on("click", ()=> {
 
 
 
-// Function for when user on desktop/pc/laptop or using a keyboard hits the ENTER key
-
+// Function for when user on desktop/pc/laptop or using a keyboard hits ANY key
+// It just repeats what happens when they click on the search BUTTON too. 
 body.on("keyup", (e)=>{
 
-  let newWord = usersWord.val().toLowerCase()
+  if(usersWord.val() !== ""){
 
-  if(words[newWord]){
-
-  if(e.code === "Enter"){
-      main.animate({height: "20vh"}, 'slow');
-      inputBox.animate({opacity: "0.00003"}, 400)
-
-
-  
-      meaning.show(300)
-
-      meaning.children("h3").text(usersWord.val().toUpperCase())
-
-      meaning.children("p").text(words[usersWord.val().toLowerCase()])
-  }
-
-
-
-}
+    // if it isnt empty, regardless of 
+    // Getting the data or not, 
+    // Users see a loading Animation
+    //  ======>
+    
+        main.animate({height: "20vh"}, 'slow');
+    
+        // Opaque the input area
+        inputBox.animate({opacity: "0.88"}, 400);
+    
+        // Show the meaning section
+        meaning.show(300)
+    
+    // The usersWord to lowercases
+    let userWordtolowercase = usersWord.val().toLowerCase()
+    
+    // Use this to check if the word is om database.
+    let getUserWord = ref.collection("dictionary").where("names" , "==" ,  userWordtolowercase).get()
+    
+    // Get the snapshot of that document.
+    getUserWord.then(snapshot => {
+    
+    
+      // If it's empty then return something like so
+      if(snapshot.empty){
+        console.log("No data")
+    
+        meaning.children("h3").text("Word not Found");
+        meaning.children("#word").html(`Oh we couldn't find your word! ${`<a style="color: #211F97; font-weight: 900" href=" https://www.google.com/search?client=firefox-b-d&q=${usersWord.val()} "> Click Here</a>` } to find it on GOOGLE, Goolge has all the answers after all. `)
+        headingLoading.hide();
+        meaningLoading.hide();
+    
+    
+      }
+    
+      // But if not empty then loop through the doc and it 
+      // returns a data which you can access at every looop. 
+    
+      else{
+    
+    
+      snapshot.forEach( 
+    
+        doc =>{ 
+    
+          // that's an object.
+          let returnedWord = doc.data()
+    
+          meaningLoading.hide();
+          headingLoading.hide()
+    
+           // Edit texts
+          meaning.children("h3").text(usersWord.val().toUpperCase())
+          meaning.children("#word").text(Object.values(returnedWord)[0])
+        }
+      )
+    
+      }
+    })
+    
+    
+    
+    }
 })
 
 
@@ -184,3 +208,14 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 let ref = firebase.firestore();
+
+
+
+setInterval(() => {
+ if(usersWord.val() === "" || usersWord.val() === " " || usersWord.val() === "  " ){
+  meaning.children("h3").text("")
+  meaning.children("#word").text("");
+  meaningLoading.show();
+  headingLoading.show()
+ }
+}, 100)
