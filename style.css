@@ -157,24 +157,6 @@ color: rgb(19, 19, 19);
   padding-left: 2%;
 }
 
-#usrErrorNotification::before { 
-  width: 20px;
-  height: 20px;
-  background-color: rgb(255, 255, 255);
-  display: block;
-  content: 'x';
-  position: absolute;
-  right: 1%;
-  color: orange;
-  top: 24%;
-  cursor: pointer;
-  border-radius: 200px;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  padding: 2px 2px 3px 2px
-}
-
 
 /* Tablet responsivness */
 

@@ -45,7 +45,7 @@ window.onload = () => {
       })
       )
       .catch(e => { 
-        if(e.name === 'TypeErro' || e.name === 'SyntaxError') { 
+        if(e.name === 'TypeError' || e.name === 'SyntaxError') { 
           $('#usrErrorNotification').fadeIn(800);
           setInterval(() => {
             $('#usrErrorNotification').fadeOut(800)
@@ -55,7 +55,8 @@ window.onload = () => {
           $('#orginQuote').text('');
           $('#originText').text('');
           $('#phoneticQuote').text('');
-          
+          $('.main').animate({height: '100vh'}, 900);
+          $('.meanings').hide();
         }
       })
     }
