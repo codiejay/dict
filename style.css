@@ -5,16 +5,19 @@ body{
     /* position: relative; */
 }
 
-html{
-    margin: 0;
-    padding: 0;
-    color: hsla(305, 65%, 59%, 0.425)
-}
+/* Tablet responsivness */
 
+@media (min-width: 760px) and (max-width: 1024px) {
+  .inputssection {
+    width: 80%;
+  }
 
+  .inputs {
+    padding-left: 15vw;
+  }
 
-.main{
-    background: linear-gradient(to top right, #912BC0, #211F97);
+  .main::before {
+    width: 20vw;
     height: 100vh;
     /* position: relative; */
 }
@@ -147,6 +150,10 @@ html{
     border-bottom: 1px solid #211F97;
 }
 
+@media (min-width: 320px) and (max-width: 480px) {
+  .inputssection {
+    width: 90vw;
+  }
 
 .meanings p{
     font-size: 1.2em;
