@@ -1,51 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> -->
     <link rel="stylesheet" href="./style.css">
     <title>Dictionary</title>
-    <link href="https://fonts.googleapis.com/css?family=Raleway:200" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
     <meta name="theme-color" content="#211F97">
-
-    <!-- Google Firebase LET'S GO! -->
-    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
-    
 </head>
-<body>
-    
+<body>  
     <div class="main">
         <div class="inputs">
             <div class="inputssection">
                     <input type="text" class="usersWord" placeholder="SEARCH WORD"> <img  src="./search.svg" alt="" id="searchButton">
-       
             </div>
         </div>
        
     </div>
 
-    <div class="meaning">
-        <h1>X</h1>
-        <h3></h3>
-        <p id="word"></p>
-        <div class="headingLoading"></div>
-        <div class="meaningLoading"></div>
-
+    <div class="meanings">
+      <h1 id='closeMeaningButton'>X</h1>
+      <div id='meaning'> 
+        <h3 id='wordPicked'></h3>
+        <p id='origin'>
+          <span id='orginQuote'></span> <span id='originText'></span> 
+        </p>
+        <p id='phonetic'>
+          <span id='phoneticQuote'></span>
+          <span id='phoneticText'></span>
+        </p>
+        <!-- <div id='individualMeaning'>
+          <h3>01</h3> -->
+          
+          <!-- <p id='fullMeaning'>
+            <h4>Noun</h4>
+            "Middle English from Anglo-Norman French corune (noun), coruner (verb), Old French corone (noun), coroner (verb), from Latin corona ‘wreath, chaplet’."
+          </p> -->
+        <!-- </div> -->
+      </div> 
         
     </div>
-
-
-
-
-    <script src="./dictOne.js"></script>
-    <script src="./func.js"></script>
-    
+    <!-- <div>
+      <h3>There's Been An Error</h3>
+      <p>Please check your word and search again. Or search the web</p>
+    </div> -->
+    <div id='usrErrorNotification'>
+      <p>There's an error with your word, please check and try again</p>
+    </div>
+    <script src='./func.js'></script>
 </body>
 </html> 
 
