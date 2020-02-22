@@ -10,7 +10,7 @@ window.onload = () => {
     let userInput = inputSection.val().trim();
     if(userInput.length > 0) { 
       $('.motherElements').empty();
-      const requestData = await fetch(`https://googledictionaryapi.eu-gb.mybluemix.net/?define=${userInput}`);
+      const requestData = await fetch(`https://api.dictionaryapi.dev/api/v1/entries/en/${userInput}`);
       const workPicked = document.getElementById('wordPicked');
       const rawData = await requestData.json()
       .then((data => { 
@@ -50,7 +50,7 @@ window.onload = () => {
           setInterval(() => {
             $('#usrErrorNotification').fadeOut(800)
           }, 1900);
-          console.log(e.name);
+          console.log(e);
           $('#wordPicked').text('');
           $('#orginQuote').text('');
           $('#originText').text('');
