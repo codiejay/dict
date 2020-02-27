@@ -22,8 +22,6 @@ body{
   opacity: 0.4;
 }
 
-
-
 .main input{
   padding: 1em 0.8em;
   border-radius: 100px;
@@ -139,8 +137,7 @@ color: rgb(19, 19, 19);
 
 #usrErrorNotification { 
   display: block;
-  position: fixed  ;
-  width: 60%;
+  position: fixed;
   font-weight: bold;
   color: white;
   background-color: orange;
@@ -162,63 +159,140 @@ color: rgb(19, 19, 19);
 
 @media (min-width: 760px) and (max-width: 1024px) { 
 
+  .main { 
+    position: relative;
+    z-index: 3;
+  }
+
+  .main::before{
+    content: "";
+    display: block;
+    background: url("./Group.png");
+    background-repeat: no-repeat;
+    width: 30vw;
+    height: 90vh;
+    position: fixed;
+    top: 0;
+    transform: scale(1.2);
+    opacity: 0.4;
+    z-index: -4;
+    width: 24%;
+    height: 24%;
+    background-position: center;
+    background-size: contain;
+  }
+
   .inputssection{
     width: 80%;
-}
+  }
 
-.inputs{
+  .inputs img{
+    width: 3vh;
+    padding: 20px 0;
+    display: inline-block;  
+    opacity: 0.9;
+    cursor: pointer;
+  }
+
+  .inputs{
     padding-left: 15vw;
-}
+  }
 
-.main::before{
-    width: 20vw;
-    height: 100vh;
-    background-size: contain;
-    top: 10%;
-    left: 3%;
+  .meanings{
+    width: 90%;
+  }
 
-}
-
-.meanings{
-    width: 70%;
-
-}
-
-.headingLoading{
+  .headingLoading{
     height: 3vh;
-}
+  }
 
-.meaningsLoading{
+  .meaningsLoading{
     height: 20vh;
-}
+  }
+  #usrErrorNotification { 
+    display: block;
+    position: fixed  ;
+    font-weight: bold;
+    color: white;
+    background-color: orange;
+    width: 100vw;
+    margin: 0 auto;
+    z-index: 3;
+    top: 96vh;
+    left: 0vw;
+    box-sizing: border-box;
+    text-align: center;
+    display: none;
+    border-radius: 0px;
+  }
 }
 
-/* Moboile Responsivness */
+/* Mobile Responsivness */
 
 @media (min-width: 320px) and (max-width: 480px) {
+
+  .main::before{
+    content: "";
+    display: block;
+    background: url("./Group.png");
+    background-repeat: no-repeat;
+    width: 30vw;
+    height: 90vh;
+    position: fixed;
+    top: 0;
+    transform: scale(1.2);
+    opacity: 0.4;
+    z-index: -4;
+    width: 24%;
+    height: 24%;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .inputs img{
+    width: 32px;
+    opacity: 0.9;
+    padding-right: 4em;
+    cursor: pointer;
+  }
+
   .inputssection{
+    grid-template-columns:  85% 10%;
     width: 90vw;
-}
+  }
+  
 
-.inputs{
+  .meanings h1{
+    font-size: 1em;
+    justify-content: start;
+    align-items: center;
+    background: linear-gradient(#912BC0, #211F97);
+    padding: 0.3em 0.9em;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 3%;
+    border-radius: 100px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0px 0px 19px 3px rgba(212, 47, 218, 0.336);
+  }
+
+  .inputs{
     padding-left: 5vw;
-}
-.main::before{
-    display: none;
+  }
 
-}
-
-.meanings{
+  .meanings{
     width: 80%;;
-}
+  }
 
-.headingLoading{
+  .headingLoading{
     height: 3vh;
-}
+  }
 
-.meaningsLoading{
+  .meaningsLoading{
     height: 20vh;
-}
+  }
 
 
 }
